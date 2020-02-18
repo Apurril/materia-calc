@@ -21,8 +21,8 @@ function calc() {
       const overmeldSlots = slot - item.materiaSlots;
 
       const meldChance = overmeldSlots <= 0 ? 100 : ToolkitData.MateriaSuccessRates[overmeldSlots - 1][materiaGrade];
-      const ToolMultiplier = isGatherer ? 2 : isCrafter ? 8 : 1;
-      const multiplier = isTool ? ToolMultiplier : 1;
+      const toolMultiplier = isGatherer ? 2 : isCrafter ? 8 : 1;
+      const multiplier = isTool ? toolMultiplier : 1;
       const amount = (1 / (meldChance / 100)) * multiplier;
 
       const { name } = ToolkitData.Materias[materiaKey];
@@ -50,7 +50,7 @@ function calc() {
     return `${name} ${numerals[grade]}: ${Math.ceil(amount)} ${scripType}: (${scrips})`;
   }).join("\n"));
   const { white, yellow } = scripTotals;
-  console.log(`Yellow: ${yellow.toLocaleString('en')} / White: ${white.toLocaleString('en')} / Total: ${(white + yellow).toLocaleString('en')}`)
+  console.log(`Yellow: ${yellow} / White: ${white} / Total: ${(white + yellow)}`)
   
 }
 calc();
